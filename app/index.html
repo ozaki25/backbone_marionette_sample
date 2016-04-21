@@ -8,10 +8,40 @@
         <meta charset="UTF-8">
     </head>
     <body>
-      <div id="main"></div>
+      <div class="container">
+        <div class="row">
+          <div id="side_menu" class="col-sm-3">
+          </div>
+          <div id="main" class="col-sm-9">
+          </div>
+        </div>
+      </div>
 
-      <script id="test_view" type="text/template">
-        <h1>Backbone Moarionette Template</h1>
+      <script id="index_user_view" type="text/template">
+        <div class="panel panel-info">
+          <div class="panel-heading">ユーザ一覧</div>
+          <ul id="user_list" class="list-group"></ul>
+        </div>
+      </script>
+
+      <script id="user_view" type="text/template">
+        <%- name %>
+      </script>
+
+      <script id="show_user_view" type="text/template">
+        <div class="panel panel-success">
+          <div class="panel-heading"><%- name %></div>
+          <div class="panel-body">
+            <dl class="dl-horizontal">
+              <dt>ID</dt>
+              <dd><%- id %></dd>
+              <dt>名前</dt>
+              <dd><%- name %></dd>
+              <dt>ポジション</dt>
+              <dd><%- posision %></dd>
+            </dl>
+          </div>
+        </div>
       </script>
 
       <script src="scripts/app.js"></script>
