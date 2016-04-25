@@ -1,5 +1,4 @@
 var Marionette = require('backbone.marionette');
-var Users = require('../collections/Users.js');
 var IndexView = require('./users/IndexView');
 var ShowView = require('./users/ShowView');
 
@@ -16,7 +15,7 @@ module.exports = Marionette.LayoutView.extend({
         this.getRegion('sideMenu').show(new IndexView({collection: this.collection}));
         this.getRegion('mainContent').show(new ShowView({model: this.collection.first()}));
     },
-    showUser: function(e) {
-        this.getRegion('mainContent').show(new ShowView({model: e.model}));
+    showUser: function(childView) {
+        this.getRegion('mainContent').show(new ShowView({model: childView.model}));
     }
 });

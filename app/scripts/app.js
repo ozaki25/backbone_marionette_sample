@@ -53,7 +53,6 @@ module.exports = Marionette.ItemView.extend({
 
 },{"backbone.marionette":10}],5:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
-var Users = require('../collections/Users.js');
 var IndexView = require('./users/IndexView');
 var ShowView = require('./users/ShowView');
 
@@ -70,12 +69,12 @@ module.exports = Marionette.LayoutView.extend({
         this.getRegion('sideMenu').show(new IndexView({collection: this.collection}));
         this.getRegion('mainContent').show(new ShowView({model: this.collection.first()}));
     },
-    showUser: function(e) {
-        this.getRegion('mainContent').show(new ShowView({model: e.model}));
+    showUser: function(childView) {
+        this.getRegion('mainContent').show(new ShowView({model: childView.model}));
     }
 });
 
-},{"../collections/Users.js":1,"./users/IndexView":6,"./users/ShowView":7,"backbone.marionette":10}],6:[function(require,module,exports){
+},{"./users/IndexView":6,"./users/ShowView":7,"backbone.marionette":10}],6:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 var UserView = require('./UserView');
 
@@ -108,6 +107,8 @@ module.exports = Marionette.ItemView.extend({
         'click': 'onClickUser'
     },
     onClickUser: function() {
+        this.$el.siblings('.selected').removeClass('selected');
+        this.$el.addClass('selected');
         this.triggerMethod('show:user');
     }
 });

@@ -13,6 +13,8 @@ module.exports = Marionette.ItemView.extend({
         'click': 'onClickUser'
     },
     onClickUser: function() {
+        this.$el.siblings('.selected').removeClass('selected');
+        this.$el.addClass('selected');
         this.triggerMethod('show:user');
     }
 });
