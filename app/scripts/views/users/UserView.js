@@ -8,6 +8,12 @@ module.exports = Marionette.ItemView.extend({
         return {
             href: '#'
         }
+    },
+    events: {
+        'click': 'onClickUser'
+    },
+    onClickUser: function() {
+        this.triggerMethod('show:user');
     }
 });
 

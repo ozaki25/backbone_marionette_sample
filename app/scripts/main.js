@@ -4,13 +4,13 @@ var Backbone = require('backbone');
 var Marionette = require('backbone.marionette');
 var Bootstrap = require('bootstrap');
 var Users = require('./collections/Users.js');
-var IndexView = require('./views/users/IndexView');
-var ShowView = require('./views/users/ShowView');
+var HeaderView = require('./views/HeaderView');
+var MainView = require('./views/MainView');
 
 var App = new Marionette.Application({
     regions: {
-        main: '#main',
-        sideMenu: '#side_menu'
+        header: '#header',
+        main: '#main'
     },
     onStart: function() {
         var users = [
@@ -22,8 +22,8 @@ var App = new Marionette.Application({
             {id: 6, name: 'テストユーザ６', posision: 'ショート'}
         ]
         var userCollection = new Users(users);
-        this.getRegion('sideMenu').show(new IndexView({collection: userCollection}));
-        this.getRegion('main').show(new ShowView({model: userCollection.first()}));
+        this.getRegion('header').show(new HeaderView());
+        this.getRegion('main').show(new MainView({collection: userCollection}));
     }
 });
 
